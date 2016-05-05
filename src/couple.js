@@ -1,9 +1,14 @@
 window.onresize = doLayout;
-var isLoading = false;
+
 
 onload = function() {
   doLayout();
-  // var webview = document.querySelector('webview');
+  // Handles newwindow event.
+  // https://developer.chrome.com/apps/tags/webview#event-newwindow
+  webview = document.querySelector('webview');
+  webview.addEventListener('newwindow', function(e) {
+    window.open(e.targetUrl);
+  });
 };
 
 function doLayout() {
@@ -15,9 +20,4 @@ function doLayout() {
   var webviewHeight = windowHeight;
   webview.style.width = webviewWidth + 'px';
   webview.style.height = webviewHeight + 'px';
-
-  var sadWebview = document.querySelector('#sad-webview');
-  sadWebview.style.width = webviewWidth + 'px';
-  sadWebview.style.height = webviewHeight * 2/3 + 'px';
-  sadWebview.style.paddingTop = webviewHeight/3 + 'px';
 }
