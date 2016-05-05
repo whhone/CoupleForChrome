@@ -1,11 +1,10 @@
 window.onresize = doLayout;
 
-
 onload = function() {
   doLayout();
   // Handles newwindow event.
   // https://developer.chrome.com/apps/tags/webview#event-newwindow
-  webview = document.querySelector('webview');
+  var webview = document.querySelector('webview');
   webview.addEventListener('newwindow', function(e) {
     window.open(e.targetUrl);
   });
@@ -13,7 +12,6 @@ onload = function() {
 
 function doLayout() {
   var webview = document.querySelector('webview');
-
   var windowWidth = document.documentElement.clientWidth;
   var windowHeight = document.documentElement.clientHeight;
   var webviewWidth = windowWidth;
